@@ -1,3 +1,12 @@
+//Pin layout
+
+// Arduino   ESP01 Adapter
+// 5v         vcc             
+// GND        GND
+// DIGITAL 2  RX
+// DIGITAL 3  TX 
+
+
 #include <SoftwareSerial.h>
 
 SoftwareSerial wifiSerial(2, 3);      // RX, TX for ESP8266
