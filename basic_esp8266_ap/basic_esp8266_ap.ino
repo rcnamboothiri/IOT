@@ -20,17 +20,17 @@ void setup()
   // Open serial communications and wait for port to open esp8266:
   Serial.begin(115200);
   while (!Serial) {
-    ; // wait for serial port to connect. Needed for Leonardo only
+    ; 
   }
   wifiSerial.begin(115200);
   while (!wifiSerial) {
-    ; // wait for serial port to connect. Needed for Leonardo only
+    ;
   }
   sendToWifi("AT+CWMODE=2",responseTime,DEBUG); // configure as access point
   sendToWifi("AT+CIFSR",responseTime,DEBUG); // get ip address
   sendToWifi("AT+CIPMUX=1",responseTime,DEBUG); // configure for multiple connections
   sendToWifi("AT+CIPSERVER=1,80",responseTime,DEBUG); // turn on server on port 80
-  sendToWifi("AT+CWSAP=\"ESP756290\",\"12345678\",1,4",responseTime,DEBUG); // turn on server on port 80
+  sendToWifi("AT+CWSAP=\"ESP756290\",\"12345678\",1,4",responseTime,DEBUG); // turn on access point. 
 
   
  
@@ -73,7 +73,7 @@ void loop()
       digitalWrite(13,LOW);
     }
     else{
-      sendData("\nErrRead");                 //Command ERROR CODE for UNABLE TO READ
+      sendData("\n <!DOCTYPE html><html><body><h1>LED ON/OFF Using ESP 8266</h1><div class=\"btn-group\" id=\"toggle_event_editing\"><button type=\"button\" class=\"btn btn-info locked_active\"><a href=\"http://192.168.4.1:80/LEDON\">ON</a></button><button type=\"button\" class=\"btn btn-default unlocked_inactive\"><a href=\"http://192.168.4.1:80/LEDOFF\">OFF</a></button></div></body></html>");//Command ERROR CODE for UNABLE TO READ
     }
   }
   delay(responseTime);
@@ -83,7 +83,6 @@ void loop()
 /*
 * Name: sendData
 * Description: Function used to send string to tcp client using cipsend
-* Params: 
 * Returns: void
 */
 void sendData(String str){
@@ -113,7 +112,6 @@ boolean find(String string, String value){
 /*
 * Name: readSerialMessage
 * Description: Function used to read data from Arduino Serial.
-* Params: 
 * Returns: The response from the Arduino (if there is a reponse)
 */
 String  readSerialMessage(){
